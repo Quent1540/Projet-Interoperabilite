@@ -1,0 +1,17 @@
+vendor/
+.log
+charlymatloc.env
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+charlyMatLoc/src/webui/views/cache/
+
+!charlyMatLoc/src/webui/views/cache/.gitkeep
+composer.lock
+db_data/
+package-lock.json
+charlyMatLoc.web/js/out.js
+charlyMatLoc.web/js/out.js.map
+/node_modules/
+charlyMatLoc/public/uploads/*

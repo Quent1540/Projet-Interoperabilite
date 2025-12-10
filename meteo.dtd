@@ -1,0 +1,29 @@
+<!ELEMENT previsions (request_state, source, message, model_run, echeance+)>
+
+<!ELEMENT request_state (#PCDATA)>
+<!ELEMENT source (#PCDATA)>
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT model_run (#PCDATA)>
+
+<!ELEMENT echeance (temperature, pression, pluie, pluie_convective, humidite, vent_moyen, vent_rafales, vent_direction, iso_zero, risque_neige, cape, nebulosite)>
+
+<!ATTLIST echeance 
+          hour CDATA #REQUIRED
+          timestamp CDATA #REQUIRED>
+
+<!ELEMENT temperature (level+)>
+<!ELEMENT pression (level+)>
+<!ELEMENT pluie (level*)>
+<!ELEMENT pluie_convective (level*)>
+<!ELEMENT humidite (level+)>
+<!ELEMENT vent_moyen (level+)>
+<!ELEMENT vent_rafales (level+)>
+<!ELEMENT vent_direction (level+)>
+<!ELEMENT iso_zero (level+)>
+<!ELEMENT risque_neige (level*)>
+<!ELEMENT cape (level*)>
+<!ELEMENT nebulosite (level+)>
+
+<!ELEMENT level (#PCDATA)>
+<!ATTLIST level 
+          val CDATA #REQUIRED>
