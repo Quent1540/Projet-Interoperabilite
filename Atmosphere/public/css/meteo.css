@@ -1,0 +1,30 @@
+.meteo-container {
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    padding: 15px;
+    max-width: 400px;
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+tr {
+    background-color: #f0f0f0;
+}
+
+th, td {
+    padding: 8px;
+}
+
+.icone {
+    font-size: 2em;
+}
