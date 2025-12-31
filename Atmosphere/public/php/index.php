@@ -61,13 +61,6 @@ if ($weatherXmlStr && strlen($weatherXmlStr) > 0) {
     <title>Tableau de Bord - <?php echo $city; ?></title>
     <link rel="stylesheet" href="../css/meteo.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <style>
-        body { font-family: Arial, sans-serif; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 10px; }
-        section { border: 1px solid #ccc; padding: 15px; border-radius: 8px; width: 100%; max-width: 500px; background: white; }
-        #map { height: 300px; width: 100%; }
-        canvas { max-width: 100%; }
-        @media (min-width: 800px) { section { width: 45%; } }
-    </style>
 </head>
 <body>
 <header style="width:100%; text-align:center;">
