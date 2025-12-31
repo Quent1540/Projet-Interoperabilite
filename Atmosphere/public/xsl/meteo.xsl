@@ -19,15 +19,15 @@
                             <th>Température</th>
                         </tr>
 
-                        <xsl:apply-templates select="echeance[contains(@hour, '08:00')]">
+                        <xsl:apply-templates select="echeance[contains(@hour, '08:00')][1]">
                             <xsl:with-param name="moment" select="'Matin'"/>
                         </xsl:apply-templates>
 
-                        <xsl:apply-templates select="echeance[contains(@hour, '14:00')]">
+                        <xsl:apply-templates select="echeance[contains(@hour, '14:00')][1]">
                             <xsl:with-param name="moment" select="'Après-midi'"/>
                         </xsl:apply-templates>
 
-                        <xsl:apply-templates select="echeance[contains(@hour, '20:00')]">
+                        <xsl:apply-templates select="echeance[contains(@hour, '20:00')][1]">
                             <xsl:with-param name="moment" select="'Soir'"/>
                         </xsl:apply-templates>
                     </table>
