@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Circulations</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/circulations.css">
+
+</head>
+<body>
+<h1>Lien Github du projet</h1>
+<a id="lien-github" href="https://github.com/Quent1540/Projet-Interoperabilite">Projet Interop</a>
+<div>
+    <h2>APIs utilisées :</h2>
+    <ul>
+        <li><a href="https://ip-api.com/docs/" target="_blank">Géolocalisation utilisateur (Doc)</a></li>
+        <li><a href="https://api.cyclocity.fr/contracts/nancy/gbfs/gbfs.json" target="_blank">Vélos partagés - Grand Nancy</a></li>
+        <li><a href="https://www.infoclimat.fr/public-api/gfs/xml?_ll=48.67103,6.15083&_auth=ARsDFFIsBCZRfFtsD3lSe1Q8ADUPeVRzBHgFZgtuAH1UMQNgUTNcPlU5VClSfVZkUn8AYVxmVW0Eb1I2WylSLgFgA25SNwRuUT1bPw83UnlUeAB9DzFUcwR4BWMLYwBhVCkDb1EzXCBVOFQoUmNWZlJnAH9cfFVsBGRSPVs1UjEBZwNkUjIEYVE6WyYPIFJjVGUAZg9mVD4EbwVhCzMAMFQzA2JRMlw5VThUKFJiVmtSZQBpXGtVbwRlUjVbKVIuARsDFFIsBCZRfFtsD3lSe1QyAD4PZA%3D%3D&_c=19f3aa7d766b6ba91191c8be71dd1ab2" target="_blank">Infoclimat</a></li>
+        <li><a href="https://air-quality-api.open-meteo.com/v1/air-quality?latitude=48.6822&longitude=6.1611&current=european_aqi" target="_blank">OpenMeteo(qualité de l'air)</a></li>
+    </ul>
+</div>
+
+
+<h1 id="météo">Météo de Nancy</h1>
+
+<div id="conseil">Chargement des données environnementales...</div>
+
+<h1>Vélos partagés à Nancy</h1>
+
+<div id="map"></div>
+
+<script src="../js/circulations.js"></script>
+</body>
+</html>
