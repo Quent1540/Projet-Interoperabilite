@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => { // Changé en async 
 
     try {
         //Localisation de l'utilisateur en utilisant ip-api.com
-        const u = await fetch('https://ip-api.com/json/').then(r => r.json()).catch(() => null);
+        const u = await fetch('http://ip-api.com/json/').then(r => r.json()).catch(() => null);
         const lat = u?.lat || 48.6822;
         const lon = u?.lon || 6.1611;
         const city = u?.city || "Nancy";
@@ -24,26 +24,54 @@ document.addEventListener('DOMContentLoaded', async () => { // Changé en async 
         ]);
 
         const xml = new DOMParser().parseFromString(txt, "text/xml").querySelector("echeance");
+        const dateMeteo = xml.getAttribute("timestamp");
         //L'api Infoclimat contient les températures en Kelvin, on doit donc convertir en Celsius et arrondir
         const temp = (xml.querySelector("temperature level[val='sol']").textContent - 273.15).toFixed(1);
         const pluie = parseFloat(xml.querySelector("pluie").textContent);
         const vent = parseFloat(xml.querySelector("vent_moyen level[val='10m']").textContent);
         const aqi = air.current.european_aqi;
+        const dateAir = air.current.time.replace("T", " ");
+        let conseilAqi, couleurAqi;
 
-        const div = document.getElementById('conseil');
+        if (aqi < 20) {
+            conseilAqi = "Excellent";
+            couleurAqi = "#50f0e6";
+        } else if (aqi < 40) {
+            conseilAqi = "Bon";
+            couleurAqi = "#50ccaa";
+        } else if (aqi < 60) {
+            conseilAqi = "Modéré";
+            couleurAqi = "#f0e641";
+        } else if (aqi < 80) {
+            conseilAqi = "Mauvais";
+            couleurAqi = "#ff5050";
+        } else if (aqi < 100) {
+            conseilAqi = "Très mauvais";
+            couleurAqi = "#960032";
+        } else {
+            conseilAqi = "Dangereux";
+            couleurAqi = "#7d2181";
+        }
+
+        const div = document.getElementById('conseil-meteo');
         let msg = "Conditions favorables", bg = "#d4edda";
 
         if (pluie > 0.5 || vent > 40) {msg = "☔/💨 Vélo non conseillé"; bg = "#fff3cd";}
-        if (aqi > 50) {
-            msg += " / Pollution élevée"; bg = "#f8d7da";
+        else{
+            {msg = "Conditions favorables"; bg = "#d4edda";}
         }
 
         div.style.background = bg;
-        div.innerHTML = `${msg} <br><small>Température:${temp}°C | ☔:${pluie}mm | 💨:${vent}km/h | Indice de qualité de l'air:${aqi}</small>`;
+        div.innerHTML = `${msg} <br>
+        <small>
+             📅 Météo: ${dateMeteo} | Air: ${dateAir} <br>
+             🌡️Temp: ${temp}°C | ☔Pluie: ${pluie}mm | 💨Vent: ${vent}km/h <br>
+             Indice de qualité de l'air: <b style="color: ${couleurAqi}; font-size: 1.1em;">${aqi} (${conseilAqi})</b>
+        </small>`;
 
     } catch (error) {
         console.error("Erreur météo:", error);
-        document.getElementById('conseil').innerHTML = "Erreur de chargement des données météo";
+        document.getElementById('conseil-meteo').innerHTML = "Erreur de chargement des données météo";
     }
 
     try {
