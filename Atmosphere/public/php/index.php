@@ -169,5 +169,17 @@ function getAirColor($qualite) {
     const userLon = <?php echo $lon; ?>;
 </script>
 <script src="../js/app.js"></script>
+
+<footer style="margin-top: 30px; padding: 20px; background: #f0f0f0; text-align: center; font-size: 0.8em; border-top: 1px solid #ccc; width: 100%;">
+    <p><strong>Sources des données :</strong></p>
+    <ul style="list-style: none; padding: 0;">
+        <li>Géolocalisation : <a href="https://ip-api.com/docs/" target="_blank">ip-api.com</a></li>
+        <li>Météo : <a href="https://www.infoclimat.fr/public-api/gfs/xml?_ll=48.67103,6.15083&_auth=ARsDFFIsBCZRfFtsD3lSe1Q8ADUPeVRzBHgFZgtuAH1UMQNgUTNcPlU5VClSfVZkUn8AYVxmVW0Eb1I2WylSLgFgA25SNwRuUT1bPw83UnlUeAB9DzFUcwR4BWMLYwBhVCkDb1EzXCBVOFQoUmNWZlJnAH9cfFVsBGRSPVs1UjEBZwNkUjIEYVE6WyYPIFJjVGUAZg9mVD4EbwVhCzMAMFQzA2JRMlw5VThUKFJiVmtSZQBpXGtVbwRlUjVbKVIuARsDFFIsBCZRfFtsD3lSe1QyAD4PZA%3D%3D&_c=19f3aa7d766b6ba91191c8be71dd1ab2" target="_blank">Infoclimat</a></li>
+        <li>Qualité de l'air : <a href="https://www.atmo-grandest.eu/" target="_blank">Atmo Grand Est (ArcGIS)</a></li>
+        <li>Covid-19 : <a href="https://odisse.santepubliquefrance.fr/api/explore/v2.1/catalog/datasets/sum-eau-indicateurs/records?where=commune%3D%22NANCY%22&limit=50" target="_blank">Santé Publique France (Odissé)</a></li>
+        <li>Fond de carte : <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a></li>
+    </ul>
+    <p>CADET Mattéo - DIEUDONNE Quentin</p>
+</footer>
 </body>
 </html>
