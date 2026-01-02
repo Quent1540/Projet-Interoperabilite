@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>Lien Github du projet</h1>
-<a id="lien-github" href="https://github.com/Quent1540/Projet-Interoperabilite">Projet Interop</a>
+<a id="lien-github" href="https://github.com/Quent1540/Projet-Interoperabilite" target="_blank">Projet Interop</a>
 <div>
     <h2>APIs utilisées :</h2>
     <ul>
