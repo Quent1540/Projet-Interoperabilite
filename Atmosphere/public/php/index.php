@@ -121,7 +121,7 @@ function getAirColor($qualite) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord - <?php echo $ville; ?></title>
-    <link rel="stylesheet" href="../css/meteo.css">
+    <link rel="stylesheet" href="../css/atmosphere.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 <body>
@@ -173,6 +173,7 @@ function getAirColor($qualite) {
 <footer style="margin-top: 30px; padding: 20px; background: #f0f0f0; text-align: center; font-size: 0.8em; border-top: 1px solid #ccc; width: 100%;">
     <p><strong>Sources des données :</strong></p>
     <ul style="list-style: none; padding: 0;">
+        <li>Lien Github du projet : <a href="https://github.com/Quent1540/Projet-Interoperabilite" target="_blank">Projet Interop</a></li>
         <li>Géolocalisation : <a href="https://ip-api.com/docs/" target="_blank">ip-api.com</a></li>
         <li>Météo : <a href="https://www.infoclimat.fr/public-api/gfs/xml?_ll=48.67103,6.15083&_auth=ARsDFFIsBCZRfFtsD3lSe1Q8ADUPeVRzBHgFZgtuAH1UMQNgUTNcPlU5VClSfVZkUn8AYVxmVW0Eb1I2WylSLgFgA25SNwRuUT1bPw83UnlUeAB9DzFUcwR4BWMLYwBhVCkDb1EzXCBVOFQoUmNWZlJnAH9cfFVsBGRSPVs1UjEBZwNkUjIEYVE6WyYPIFJjVGUAZg9mVD4EbwVhCzMAMFQzA2JRMlw5VThUKFJiVmtSZQBpXGtVbwRlUjVbKVIuARsDFFIsBCZRfFtsD3lSe1QyAD4PZA%3D%3D&_c=19f3aa7d766b6ba91191c8be71dd1ab2" target="_blank">Infoclimat</a></li>
         <li>Qualité de l'air : <a href="https://www.atmo-grandest.eu/" target="_blank">Atmo Grand Est (ArcGIS)</a></li>

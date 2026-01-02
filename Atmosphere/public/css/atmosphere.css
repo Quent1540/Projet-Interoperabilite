@@ -1,0 +1,187 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch; /*Pour avoir les cartes à la même taille*/
+    gap: 25px;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin: 0;
+}
+
+section {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 550px;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
+}
+
+section h2 {
+    color: #4a4a4a;
+    text-align: center;
+    margin-top: 0;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+/* Qulité de l'air */
+#air-quality {
+    justify-content: center;
+}
+
+#air-quality h2 {
+    margin-bottom: auto;
+}
+
+#air-quality div {
+    margin-bottom: auto;
+}
+
+/* Tableau Météo */
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    margin-bottom: auto;
+}
+
+th {
+    color: #667eea;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    padding: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+td {
+    padding: 12px 5px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1em;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.icone {
+    font-size: 1.8em;
+}
+
+#map, canvas {
+    border-radius: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    max-height: 320px;
+}
+
+#map {
+    height: 300px;
+    width: 100%;
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+footer {
+    width: 100%;
+    margin-top: 40px;
+    padding: 30px;
+    text-align: center;
+    background: #ffffff;
+    color: #333;
+    border-radius: 15px;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+}
+
+footer p strong {
+    color: #667eea;
+    font-size: 1.1em;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+footer a {
+    text-decoration: none;
+    background-color: #f4f6f8;
+    color: #444;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: 0.3s;
+    font-weight: 600;
+    font-size: 0.9em;
+    border: 1px solid #e1e4e8;
+}
+
+footer a:hover {
+    background-color: #667eea;
+    color: #fff;
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive */
+/* PC */
+@media (min-width: 950px) {
+    section {
+        width: 45%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 949px) {
+    body {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    section {
+        min-height: auto;
+    }
+    footer ul {
+        flex-direction: column;
+    }
+}
