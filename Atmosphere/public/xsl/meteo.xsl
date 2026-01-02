@@ -1,50 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
     <xsl:output method="html" encoding="UTF-8" indent="yes"/>
 
     <xsl:template match="/previsions">
-        <html>
-            <head>
-                <link rel="stylesheet" href="meteo.css"/>
-            </head>
-            <body>
-                <div class="meteo-container">
-                    <h2>Météo du jour</h2>
+        <div class="meteo-container">
+            <h2>Météo (prochaines heures)</h2>
+            <table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+                <tr style="background-color: #f0f0f0;">
+                    <th>Délai</th>
+                    <th>Ciel</th>
+                    <th>Temp.</th>
+                </tr>
 
-                    <table>
-                        <tr>
-                            <th>Moment</th>
-                            <th>Météo</th>
-                            <th>Température</th>
-                        </tr>
-
-                        <xsl:apply-templates select="echeance[contains(@hour, '08:00')][1]">
-                            <xsl:with-param name="moment" select="'Matin'"/>
-                        </xsl:apply-templates>
-
-                        <xsl:apply-templates select="echeance[contains(@hour, '14:00')][1]">
-                            <xsl:with-param name="moment" select="'Après-midi'"/>
-                        </xsl:apply-templates>
-
-                        <xsl:apply-templates select="echeance[contains(@hour, '20:00')][1]">
-                            <xsl:with-param name="moment" select="'Soir'"/>
-                        </xsl:apply-templates>
-                    </table>
-                </div>
-            </body>
-        </html>
+                <xsl:apply-templates select="echeance[position() &lt; 5]">
+                </xsl:apply-templates>
+            </table>
+        </div>
     </xsl:template>
 
     <xsl:template match="echeance">
-        <xsl:param name="moment"/>
-        <xsl:variable name="temp" select="temperature/level[@val='2m']"/>
-        <xsl:variable name="vent" select="vent_moyen/level[@val='10m']"/>
+        <xsl:variable name="heure" select="@hour"/>
+        <xsl:variable name="temp" select="temperature/level[@val='2m'] - 273.15"/>
+
+        <xsl:variable name="vent">
+            <xsl:choose>
+                <xsl:when test="vent_moyen/level[@val='10m']">
+                    <xsl:value-of select="vent_moyen/level[@val='10m']"/>
+                </xsl:when>
+                <xsl:otherwise>0</xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
 
         <tr>
-            <td><strong><xsl:value-of select="$moment"/></strong></td>
+            <td>+<xsl:value-of select="$heure"/>h</td>
 
-            <td class="icone">
+            <td class="icone" style="font-size: 1.5em;">
                 <xsl:choose>
                     <xsl:when test="risque_neige/level > 0">❄️</xsl:when>
                     <xsl:when test="pluie/level > 0">🌧️</xsl:when>
@@ -52,7 +42,6 @@
                     <xsl:otherwise>☀️</xsl:otherwise>
                 </xsl:choose>
             </td>
-
             <td>
                 <strong><xsl:value-of select="round($temp)"/>°C</strong>
             </td>
