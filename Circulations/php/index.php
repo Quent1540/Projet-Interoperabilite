@@ -26,7 +26,7 @@
 
 <h1 id="météo">Météo de Nancy</h1>
 
-<div id="conseil">Chargement des données environnementales...</div>
+<div id="conseil-meteo">Chargement des données environnementales...</div>
 
 <h1>Vélos partagés à Nancy</h1>
 
