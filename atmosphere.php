@@ -19,7 +19,7 @@ $opts = array(
 
 //Si on est à l'iut (= pas en local), on ajoute le proxy aux options existantes
 if (!$isLocal) {
-    $proxy = 'tcp://127.0.0.1:8080';
+    $proxy = 'tcp://www-cache.iutnc.univ-lorraine.fr:3128';
     $opts['http']['proxy'] = $proxy;
     $opts['http']['request_fulluri'] = true;
 }
@@ -58,8 +58,8 @@ if ($weatherXmlStr && strlen($weatherXmlStr) > 0) {
         //Transformation xslt
         $xslt = new XSLTProcessor();
         $XSL = new DOMDocument();
-        if (file_exists('../xsl/meteo.xsl')) {
-            $XSL->load('../xsl/meteo.xsl');
+        if (file_exists('Atmosphere/public/xsl/meteo.xsl')) {
+            $XSL->load('Atmosphere/public/xsl/meteo.xsl');
             $xslt->importStylesheet($XSL);
             $meteoHtml = $xslt->transformToXML($weatherXML);
         } else {
@@ -82,7 +82,14 @@ $queryString = http_build_query($params, '', '&', PHP_QUERY_RFC3986);
 
 $baseUrl = "https://services3.arcgis.com/Is0UwT37raQYl9Jj/arcgis/rest/services/ind_grandest_4j/FeatureServer/0/query";
 $airUrl = $baseUrl . "?" . $queryString;
-$airData = @file_get_contents($airUrl, false, $context);
+
+$optsAir = $opts;
+if (isset($optsAir['http']['request_fulluri'])) {
+    unset($optsAir['http']['request_fulluri']);
+}
+$contextAir = stream_context_create($optsAir);
+
+$airData = @file_get_contents($airUrl, false, $contextAir);
 $airInfo = null;
 $airError = "";
 
@@ -121,7 +128,7 @@ function getAirColor($qualite) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord - <?php echo $ville; ?></title>
-    <link rel="stylesheet" href="../css/atmosphere.css">
+    <link rel="stylesheet" href="Atmosphere/public/css/atmosphere.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 <body>
@@ -168,7 +175,7 @@ function getAirColor($qualite) {
     const userLat = <?php echo $lat; ?>;
     const userLon = <?php echo $lon; ?>;
 </script>
-<script src="../js/app.js"></script>
+<script src="Atmosphere/public/js/app.js"></script>
 
 <footer style="margin-top: 30px; padding: 20px; background: #f0f0f0; text-align: center; font-size: 0.8em; border-top: 1px solid #ccc; width: 100%;">
     <p><strong>Sources des données :</strong></p>
